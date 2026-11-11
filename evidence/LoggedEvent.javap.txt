@@ -1,0 +1,889 @@
+Compiled from "LoggedEvent.java"
+public class common.LoggedEvent implements java.io.Serializable,common.Scriptable,common.Transcript,common.Loggable,common.Informant {
+  public static final short PUBLIC_CHAT_EVENT;
+
+  public static final short PRIVATE_CHAT_EVENT;
+
+  public static final short JOIN_EVENT;
+
+  public static final short QUIT_EVENT;
+
+  public static final short ACTION_EVENT;
+
+  public static final short NOTIFY_EVENT;
+
+  public static final short NOUSER_ERROR;
+
+  public static final short NEW_SITE;
+
+  public static final short BEACON_INITIAL_EVENT;
+
+  public static final short SSH_INITIAL_EVENT;
+
+  public java.lang.String from;
+
+  public java.lang.String to;
+
+  public java.lang.String text;
+
+  public long when;
+
+  public short type;
+
+  public static final common.LoggedEvent NoUser(common.LoggedEvent);
+    Code:
+       0: new           #1                  // class common/LoggedEvent
+       3: dup
+       4: aconst_null
+       5: checkcast     #2                  // class java/lang/String
+       8: aload_0
+       9: getfield      #3                  // Field to:Ljava/lang/String;
+      12: bipush        6
+      14: aconst_null
+      15: checkcast     #2                  // class java/lang/String
+      18: invokespecial #4                  // Method "<init>":(Ljava/lang/String;Ljava/lang/String;SLjava/lang/String;)V
+      21: astore_1
+      22: aload_1
+      23: aload_0
+      24: getfield      #5                  // Field when:J
+      27: putfield      #5                  // Field when:J
+      30: aload_1
+      31: areturn
+
+  public static final common.LoggedEvent Join(java.lang.String, java.lang.String);
+    Code:
+       0: new           #1                  // class common/LoggedEvent
+       3: dup
+       4: aload_0
+       5: aconst_null
+       6: checkcast     #2                  // class java/lang/String
+       9: iconst_2
+      10: aload_1
+      11: invokespecial #4                  // Method "<init>":(Ljava/lang/String;Ljava/lang/String;SLjava/lang/String;)V
+      14: areturn
+
+  public static final common.LoggedEvent Quit(java.lang.String);
+    Code:
+       0: new           #1                  // class common/LoggedEvent
+       3: dup
+       4: aload_0
+       5: aconst_null
+       6: checkcast     #2                  // class java/lang/String
+       9: iconst_3
+      10: aconst_null
+      11: checkcast     #2                  // class java/lang/String
+      14: invokespecial #4                  // Method "<init>":(Ljava/lang/String;Ljava/lang/String;SLjava/lang/String;)V
+      17: areturn
+
+  public static final common.LoggedEvent Public(java.lang.String, java.lang.String);
+    Code:
+       0: new           #1                  // class common/LoggedEvent
+       3: dup
+       4: aload_0
+       5: aconst_null
+       6: checkcast     #2                  // class java/lang/String
+       9: iconst_0
+      10: aload_1
+      11: invokespecial #4                  // Method "<init>":(Ljava/lang/String;Ljava/lang/String;SLjava/lang/String;)V
+      14: areturn
+
+  public static final common.LoggedEvent Private(java.lang.String, java.lang.String, java.lang.String);
+    Code:
+       0: new           #1                  // class common/LoggedEvent
+       3: dup
+       4: aload_0
+       5: aload_1
+       6: iconst_1
+       7: aload_2
+       8: invokespecial #4                  // Method "<init>":(Ljava/lang/String;Ljava/lang/String;SLjava/lang/String;)V
+      11: areturn
+
+  public static final common.LoggedEvent Action(java.lang.String, java.lang.String);
+    Code:
+       0: new           #1                  // class common/LoggedEvent
+       3: dup
+       4: aload_0
+       5: aconst_null
+       6: checkcast     #2                  // class java/lang/String
+       9: iconst_4
+      10: aload_1
+      11: invokespecial #4                  // Method "<init>":(Ljava/lang/String;Ljava/lang/String;SLjava/lang/String;)V
+      14: areturn
+
+  public static final common.LoggedEvent Notify(java.lang.String);
+    Code:
+       0: new           #1                  // class common/LoggedEvent
+       3: dup
+       4: aconst_null
+       5: checkcast     #2                  // class java/lang/String
+       8: aconst_null
+       9: checkcast     #2                  // class java/lang/String
+      12: iconst_5
+      13: aload_0
+      14: invokespecial #4                  // Method "<init>":(Ljava/lang/String;Ljava/lang/String;SLjava/lang/String;)V
+      17: areturn
+
+  public static final common.LoggedEvent NewSite(java.lang.String, java.lang.String, java.lang.String);
+    Code:
+       0: new           #1                  // class common/LoggedEvent
+       3: dup
+       4: aload_0
+       5: aconst_null
+       6: checkcast     #2                  // class java/lang/String
+       9: bipush        7
+      11: aload_2
+      12: aload_1
+      13: invokedynamic #6,  0              // InvokeDynamic #0:makeConcatWithConstants:(Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
+      18: invokespecial #4                  // Method "<init>":(Ljava/lang/String;Ljava/lang/String;SLjava/lang/String;)V
+      21: areturn
+
+  private static java.lang.String getIPInfoOld();
+    Code:
+       0: iconst_1
+       1: anewarray     #7                  // class javax/net/ssl/TrustManager
+       4: dup
+       5: iconst_0
+       6: new           #8                  // class common/LoggedEvent$1
+       9: dup
+      10: invokespecial #9                  // Method common/LoggedEvent$1."<init>":()V
+      13: aastore
+      14: astore_0
+      15: ldc           #10                 // String SSL
+      17: invokestatic  #11                 // Method javax/net/ssl/SSLContext.getInstance:(Ljava/lang/String;)Ljavax/net/ssl/SSLContext;
+      20: astore_1
+      21: aload_1
+      22: aconst_null
+      23: aload_0
+      24: new           #12                 // class java/security/SecureRandom
+      27: dup
+      28: invokespecial #13                 // Method java/security/SecureRandom."<init>":()V
+      31: invokevirtual #14                 // Method javax/net/ssl/SSLContext.init:([Ljavax/net/ssl/KeyManager;[Ljavax/net/ssl/TrustManager;Ljava/security/SecureRandom;)V
+      34: aload_1
+      35: invokevirtual #15                 // Method javax/net/ssl/SSLContext.getSocketFactory:()Ljavax/net/ssl/SSLSocketFactory;
+      38: invokestatic  #16                 // Method javax/net/ssl/HttpsURLConnection.setDefaultSSLSocketFactory:(Ljavax/net/ssl/SSLSocketFactory;)V
+      41: invokestatic  #17                 // Method java/net/http/HttpClient.newBuilder:()Ljava/net/http/HttpClient$Builder;
+      44: aload_1
+      45: invokeinterface #18,  2           // InterfaceMethod java/net/http/HttpClient$Builder.sslContext:(Ljavax/net/ssl/SSLContext;)Ljava/net/http/HttpClient$Builder;
+      50: invokeinterface #19,  1           // InterfaceMethod java/net/http/HttpClient$Builder.build:()Ljava/net/http/HttpClient;
+      55: astore_2
+      56: new           #20                 // class java/net/URL
+      59: dup
+      60: ldc           #21                 // String https://v6r.ipip.net/?format=callback
+      62: invokespecial #22                 // Method java/net/URL."<init>":(Ljava/lang/String;)V
+      65: astore_3
+      66: invokestatic  #23                 // Method java/net/http/HttpRequest.newBuilder:()Ljava/net/http/HttpRequest$Builder;
+      69: aload_3
+      70: invokevirtual #24                 // Method java/net/URL.toString:()Ljava/lang/String;
+      73: invokestatic  #25                 // Method java/net/URI.create:(Ljava/lang/String;)Ljava/net/URI;
+      76: invokeinterface #26,  2           // InterfaceMethod java/net/http/HttpRequest$Builder.uri:(Ljava/net/URI;)Ljava/net/http/HttpRequest$Builder;
+      81: invokeinterface #27,  1           // InterfaceMethod java/net/http/HttpRequest$Builder.GET:()Ljava/net/http/HttpRequest$Builder;
+      86: invokeinterface #28,  1           // InterfaceMethod java/net/http/HttpRequest$Builder.build:()Ljava/net/http/HttpRequest;
+      91: astore        4
+      93: aload_2
+      94: aload         4
+      96: invokestatic  #29                 // Method java/net/http/HttpResponse$BodyHandlers.ofString:()Ljava/net/http/HttpResponse$BodyHandler;
+      99: invokevirtual #30                 // Method java/net/http/HttpClient.send:(Ljava/net/http/HttpRequest;Ljava/net/http/HttpResponse$BodyHandler;)Ljava/net/http/HttpResponse;
+     102: astore        5
+     104: aload         5
+     106: invokeinterface #31,  1           // InterfaceMethod java/net/http/HttpResponse.body:()Ljava/lang/Object;
+     111: checkcast     #2                  // class java/lang/String
+     114: areturn
+     115: astore_0
+     116: ldc           #33                 // String UnkownIP
+     118: areturn
+    Exception table:
+       from    to  target type
+           0   114   115   Class java/lang/Exception
+
+  private static java.lang.String getIPInfo(java.lang.String, java.lang.String, java.lang.String);
+    Code:
+       0: ldc           #34                 // String CatServer.properties
+       2: astore_3
+       3: invokestatic  #35                 // Method getIPInfoOld:()Ljava/lang/String;
+       6: astore        4
+       8: aload         4
+      10: invokevirtual #36                 // Method java/lang/String.strip:()Ljava/lang/String;
+      13: astore        4
+      15: aload         4
+      17: ldc           #37                 // String callback(\'
+      19: ldc           #38                 // String
+      21: invokevirtual #39                 // Method java/lang/String.replace:(Ljava/lang/CharSequence;Ljava/lang/CharSequence;)Ljava/lang/String;
+      24: astore        4
+      26: aload         4
+      28: ldc           #40                 // String \')
+      30: ldc           #38                 // String
+      32: invokevirtual #39                 // Method java/lang/String.replace:(Ljava/lang/CharSequence;Ljava/lang/CharSequence;)Ljava/lang/String;
+      35: astore        4
+      37: aload_3
+      38: iconst_0
+      39: anewarray     #2                  // class java/lang/String
+      42: invokestatic  #41                 // Method java/nio/file/Paths.get:(Ljava/lang/String;[Ljava/lang/String;)Ljava/nio/file/Path;
+      45: invokestatic  #42                 // Method java/nio/file/Files.readAllBytes:(Ljava/nio/file/Path;)[B
+      48: astore        5
+      50: new           #2                  // class java/lang/String
+      53: dup
+      54: aload         5
+      56: getstatic     #43                 // Field java/nio/charset/StandardCharsets.UTF_8:Ljava/nio/charset/Charset;
+      59: invokespecial #44                 // Method java/lang/String."<init>":([BLjava/nio/charset/Charset;)V
+      62: astore        6
+      64: aload_1
+      65: aload_2
+      66: aload         6
+      68: invokedynamic #45,  0             // InvokeDynamic #1:makeConcatWithConstants:(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
+      73: astore        7
+      75: invokestatic  #46                 // Method java/util/Base64.getEncoder:()Ljava/util/Base64$Encoder;
+      78: aload         7
+      80: getstatic     #43                 // Field java/nio/charset/StandardCharsets.UTF_8:Ljava/nio/charset/Charset;
+      83: invokevirtual #47                 // Method java/lang/String.getBytes:(Ljava/nio/charset/Charset;)[B
+      86: invokevirtual #48                 // Method java/util/Base64$Encoder.encodeToString:([B)Ljava/lang/String;
+      89: astore        8
+      91: aload         8
+      93: getstatic     #43                 // Field java/nio/charset/StandardCharsets.UTF_8:Ljava/nio/charset/Charset;
+      96: invokevirtual #49                 // Method java/nio/charset/Charset.toString:()Ljava/lang/String;
+      99: invokestatic  #50                 // Method java/net/URLEncoder.encode:(Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
+     102: astore        8
+     104: invokestatic  #51                 // Method java/net/http/HttpClient.newHttpClient:()Ljava/net/http/HttpClient;
+     107: astore        9
+     109: invokestatic  #23                 // Method java/net/http/HttpRequest.newBuilder:()Ljava/net/http/HttpRequest$Builder;
+     112: aload_0
+     113: aload         4
+     115: invokedynamic #52,  0             // InvokeDynamic #2:makeConcatWithConstants:(Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
+     120: invokestatic  #25                 // Method java/net/URI.create:(Ljava/lang/String;)Ljava/net/URI;
+     123: invokeinterface #26,  2           // InterfaceMethod java/net/http/HttpRequest$Builder.uri:(Ljava/net/URI;)Ljava/net/http/HttpRequest$Builder;
+     128: ldc           #53                 // String Content-Type
+     130: ldc           #54                 // String application/x-www-form-urlencoded
+     132: invokeinterface #55,  3           // InterfaceMethod java/net/http/HttpRequest$Builder.header:(Ljava/lang/String;Ljava/lang/String;)Ljava/net/http/HttpRequest$Builder;
+     137: aload         8
+     139: invokedynamic #56,  0             // InvokeDynamic #3:makeConcatWithConstants:(Ljava/lang/String;)Ljava/lang/String;
+     144: invokestatic  #57                 // Method java/net/http/HttpRequest$BodyPublishers.ofString:(Ljava/lang/String;)Ljava/net/http/HttpRequest$BodyPublisher;
+     147: invokeinterface #58,  2           // InterfaceMethod java/net/http/HttpRequest$Builder.POST:(Ljava/net/http/HttpRequest$BodyPublisher;)Ljava/net/http/HttpRequest$Builder;
+     152: invokeinterface #28,  1           // InterfaceMethod java/net/http/HttpRequest$Builder.build:()Ljava/net/http/HttpRequest;
+     157: astore        10
+     159: aload         9
+     161: aload         10
+     163: invokestatic  #29                 // Method java/net/http/HttpResponse$BodyHandlers.ofString:()Ljava/net/http/HttpResponse$BodyHandler;
+     166: invokevirtual #30                 // Method java/net/http/HttpClient.send:(Ljava/net/http/HttpRequest;Ljava/net/http/HttpResponse$BodyHandler;)Ljava/net/http/HttpResponse;
+     169: astore        11
+     171: aload         11
+     173: invokeinterface #31,  1           // InterfaceMethod java/net/http/HttpResponse.body:()Ljava/lang/Object;
+     178: checkcast     #2                  // class java/lang/String
+     181: astore        12
+     183: aload         12
+     185: invokestatic  #59                 // Method com/alibaba/fastjson/JSONObject.parseObject:(Ljava/lang/String;)Lcom/alibaba/fastjson/JSONObject;
+     188: astore        13
+     190: aload         13
+     192: ldc           #60                 // String region
+     194: invokevirtual #61                 // Method com/alibaba/fastjson/JSONObject.getString:(Ljava/lang/String;)Ljava/lang/String;
+     197: areturn
+     198: astore        4
+     200: ldc           #62                 // String 未知归属地
+     202: areturn
+    Exception table:
+       from    to  target type
+           3   197   198   Class java/lang/Exception
+
+  public static common.LoggedEvent BeaconInitial(common.BeaconEntry);
+    Code:
+       0: aload_0
+       1: invokevirtual #63                 // Method common/BeaconEntry.getExternal:()Ljava/lang/String;
+       4: aload_0
+       5: invokevirtual #64                 // Method common/BeaconEntry.getProcess:()Ljava/lang/String;
+       8: aload_0
+       9: invokevirtual #65                 // Method common/BeaconEntry.getUser:()Ljava/lang/String;
+      12: invokestatic  #66                 // Method getIPInfo:(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
+      15: invokedynamic #67,  0             // InvokeDynamic #4:makeConcatWithConstants:(Ljava/lang/String;)Ljava/lang/String;
+      20: astore_1
+      21: new           #68                 // class java/lang/StringBuilder
+      24: dup
+      25: invokespecial #69                 // Method java/lang/StringBuilder."<init>":()V
+      28: aload_0
+      29: invokevirtual #65                 // Method common/BeaconEntry.getUser:()Ljava/lang/String;
+      32: invokevirtual #70                 // Method java/lang/StringBuilder.append:(Ljava/lang/String;)Ljava/lang/StringBuilder;
+      35: ldc           #71                 // String @
+      37: invokevirtual #70                 // Method java/lang/StringBuilder.append:(Ljava/lang/String;)Ljava/lang/StringBuilder;
+      40: aload_0
+      41: invokevirtual #63                 // Method common/BeaconEntry.getExternal:()Ljava/lang/String;
+      44: invokevirtual #70                 // Method java/lang/StringBuilder.append:(Ljava/lang/String;)Ljava/lang/StringBuilder;
+      47: ldc           #72                 // String (
+      49: invokevirtual #70                 // Method java/lang/StringBuilder.append:(Ljava/lang/String;)Ljava/lang/StringBuilder;
+      52: aload_0
+      53: invokevirtual #73                 // Method common/BeaconEntry.getComputer:()Ljava/lang/String;
+      56: invokevirtual #70                 // Method java/lang/StringBuilder.append:(Ljava/lang/String;)Ljava/lang/StringBuilder;
+      59: ldc           #74                 // String ) ^
+      61: invokevirtual #70                 // Method java/lang/StringBuilder.append:(Ljava/lang/String;)Ljava/lang/StringBuilder;
+      64: aload_0
+      65: invokevirtual #64                 // Method common/BeaconEntry.getProcess:()Ljava/lang/String;
+      68: invokevirtual #70                 // Method java/lang/StringBuilder.append:(Ljava/lang/String;)Ljava/lang/StringBuilder;
+      71: aload_1
+      72: invokevirtual #70                 // Method java/lang/StringBuilder.append:(Ljava/lang/String;)Ljava/lang/StringBuilder;
+      75: ldc           #75                 // String  --
+      77: invokevirtual #70                 // Method java/lang/StringBuilder.append:(Ljava/lang/String;)Ljava/lang/StringBuilder;
+      80: aload_0
+      81: invokevirtual #65                 // Method common/BeaconEntry.getUser:()Ljava/lang/String;
+      84: invokevirtual #70                 // Method java/lang/StringBuilder.append:(Ljava/lang/String;)Ljava/lang/StringBuilder;
+      87: ldc           #76                 // String  ----
+      89: invokevirtual #70                 // Method java/lang/StringBuilder.append:(Ljava/lang/String;)Ljava/lang/StringBuilder;
+      92: aload_0
+      93: invokevirtual #77                 // Method common/BeaconEntry.getPid:()Ljava/lang/String;
+      96: invokevirtual #70                 // Method java/lang/StringBuilder.append:(Ljava/lang/String;)Ljava/lang/StringBuilder;
+      99: ldc           #76                 // String  ----
+     101: invokevirtual #70                 // Method java/lang/StringBuilder.append:(Ljava/lang/String;)Ljava/lang/StringBuilder;
+     104: aload_0
+     105: invokevirtual #78                 // Method common/BeaconEntry.getStart:()Ljava/lang/String;
+     108: invokevirtual #70                 // Method java/lang/StringBuilder.append:(Ljava/lang/String;)Ljava/lang/StringBuilder;
+     111: ldc           #79                 // String GoGoGo!!!
+     113: invokevirtual #70                 // Method java/lang/StringBuilder.append:(Ljava/lang/String;)Ljava/lang/StringBuilder;
+     116: astore_2
+     117: aload_0
+     118: invokevirtual #80                 // Method common/BeaconEntry.isBeacon:()Z
+     121: ifeq          148
+     124: new           #1                  // class common/LoggedEvent
+     127: dup
+     128: aconst_null
+     129: checkcast     #2                  // class java/lang/String
+     132: aload_0
+     133: invokevirtual #81                 // Method common/BeaconEntry.getId:()Ljava/lang/String;
+     136: bipush        8
+     138: aload_2
+     139: invokevirtual #82                 // Method java/lang/StringBuilder.toString:()Ljava/lang/String;
+     142: invokespecial #4                  // Method "<init>":(Ljava/lang/String;Ljava/lang/String;SLjava/lang/String;)V
+     145: goto          169
+     148: new           #1                  // class common/LoggedEvent
+     151: dup
+     152: aconst_null
+     153: checkcast     #2                  // class java/lang/String
+     156: aload_0
+     157: invokevirtual #81                 // Method common/BeaconEntry.getId:()Ljava/lang/String;
+     160: bipush        9
+     162: aload_2
+     163: invokevirtual #82                 // Method java/lang/StringBuilder.toString:()Ljava/lang/String;
+     166: invokespecial #4                  // Method "<init>":(Ljava/lang/String;Ljava/lang/String;SLjava/lang/String;)V
+     169: areturn
+
+  public static common.LoggedEvent OldBeaconInitial(common.BeaconEntry);
+    Code:
+       0: aload_0
+       1: invokevirtual #63                 // Method common/BeaconEntry.getExternal:()Ljava/lang/String;
+       4: aload_0
+       5: invokevirtual #64                 // Method common/BeaconEntry.getProcess:()Ljava/lang/String;
+       8: aload_0
+       9: invokevirtual #65                 // Method common/BeaconEntry.getUser:()Ljava/lang/String;
+      12: invokestatic  #66                 // Method getIPInfo:(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
+      15: invokedynamic #67,  0             // InvokeDynamic #4:makeConcatWithConstants:(Ljava/lang/String;)Ljava/lang/String;
+      20: astore_1
+      21: new           #68                 // class java/lang/StringBuilder
+      24: dup
+      25: invokespecial #69                 // Method java/lang/StringBuilder."<init>":()V
+      28: aload_0
+      29: invokevirtual #65                 // Method common/BeaconEntry.getUser:()Ljava/lang/String;
+      32: invokevirtual #70                 // Method java/lang/StringBuilder.append:(Ljava/lang/String;)Ljava/lang/StringBuilder;
+      35: ldc           #71                 // String @
+      37: invokevirtual #70                 // Method java/lang/StringBuilder.append:(Ljava/lang/String;)Ljava/lang/StringBuilder;
+      40: aload_0
+      41: invokevirtual #63                 // Method common/BeaconEntry.getExternal:()Ljava/lang/String;
+      44: invokevirtual #70                 // Method java/lang/StringBuilder.append:(Ljava/lang/String;)Ljava/lang/StringBuilder;
+      47: ldc           #72                 // String (
+      49: invokevirtual #70                 // Method java/lang/StringBuilder.append:(Ljava/lang/String;)Ljava/lang/StringBuilder;
+      52: aload_0
+      53: invokevirtual #73                 // Method common/BeaconEntry.getComputer:()Ljava/lang/String;
+      56: invokevirtual #70                 // Method java/lang/StringBuilder.append:(Ljava/lang/String;)Ljava/lang/StringBuilder;
+      59: ldc           #74                 // String ) ^
+      61: invokevirtual #70                 // Method java/lang/StringBuilder.append:(Ljava/lang/String;)Ljava/lang/StringBuilder;
+      64: aload_0
+      65: invokevirtual #64                 // Method common/BeaconEntry.getProcess:()Ljava/lang/String;
+      68: invokevirtual #70                 // Method java/lang/StringBuilder.append:(Ljava/lang/String;)Ljava/lang/StringBuilder;
+      71: ldc           #75                 // String  --
+      73: invokevirtual #70                 // Method java/lang/StringBuilder.append:(Ljava/lang/String;)Ljava/lang/StringBuilder;
+      76: aload_0
+      77: invokevirtual #65                 // Method common/BeaconEntry.getUser:()Ljava/lang/String;
+      80: invokevirtual #70                 // Method java/lang/StringBuilder.append:(Ljava/lang/String;)Ljava/lang/StringBuilder;
+      83: ldc           #76                 // String  ----
+      85: invokevirtual #70                 // Method java/lang/StringBuilder.append:(Ljava/lang/String;)Ljava/lang/StringBuilder;
+      88: aload_0
+      89: invokevirtual #77                 // Method common/BeaconEntry.getPid:()Ljava/lang/String;
+      92: invokevirtual #70                 // Method java/lang/StringBuilder.append:(Ljava/lang/String;)Ljava/lang/StringBuilder;
+      95: ldc           #76                 // String  ----
+      97: invokevirtual #70                 // Method java/lang/StringBuilder.append:(Ljava/lang/String;)Ljava/lang/StringBuilder;
+     100: ldc           #79                 // String GoGoGo!!!
+     102: invokevirtual #70                 // Method java/lang/StringBuilder.append:(Ljava/lang/String;)Ljava/lang/StringBuilder;
+     105: astore_2
+     106: aload_0
+     107: invokevirtual #80                 // Method common/BeaconEntry.isBeacon:()Z
+     110: ifeq          137
+     113: new           #1                  // class common/LoggedEvent
+     116: dup
+     117: aconst_null
+     118: checkcast     #2                  // class java/lang/String
+     121: aload_0
+     122: invokevirtual #81                 // Method common/BeaconEntry.getId:()Ljava/lang/String;
+     125: bipush        10
+     127: aload_2
+     128: invokevirtual #82                 // Method java/lang/StringBuilder.toString:()Ljava/lang/String;
+     131: invokespecial #4                  // Method "<init>":(Ljava/lang/String;Ljava/lang/String;SLjava/lang/String;)V
+     134: goto          158
+     137: new           #1                  // class common/LoggedEvent
+     140: dup
+     141: aconst_null
+     142: checkcast     #2                  // class java/lang/String
+     145: aload_0
+     146: invokevirtual #81                 // Method common/BeaconEntry.getId:()Ljava/lang/String;
+     149: bipush        9
+     151: aload_2
+     152: invokevirtual #82                 // Method java/lang/StringBuilder.toString:()Ljava/lang/String;
+     155: invokespecial #4                  // Method "<init>":(Ljava/lang/String;Ljava/lang/String;SLjava/lang/String;)V
+     158: areturn
+
+  public common.LoggedEvent(java.lang.String, java.lang.String, short, java.lang.String);
+    Code:
+       0: aload_0
+       1: invokespecial #83                 // Method java/lang/Object."<init>":()V
+       4: aload_0
+       5: aconst_null
+       6: putfield      #84                 // Field from:Ljava/lang/String;
+       9: aload_0
+      10: aconst_null
+      11: putfield      #3                  // Field to:Ljava/lang/String;
+      14: aload_0
+      15: aconst_null
+      16: putfield      #85                 // Field text:Ljava/lang/String;
+      19: aload_0
+      20: lconst_0
+      21: putfield      #5                  // Field when:J
+      24: aload_0
+      25: iconst_0
+      26: putfield      #86                 // Field type:S
+      29: aload_0
+      30: aload_1
+      31: putfield      #84                 // Field from:Ljava/lang/String;
+      34: aload_0
+      35: aload_2
+      36: putfield      #3                  // Field to:Ljava/lang/String;
+      39: aload_0
+      40: aload         4
+      42: putfield      #85                 // Field text:Ljava/lang/String;
+      45: aload_0
+      46: iload_3
+      47: putfield      #86                 // Field type:S
+      50: aload_0
+      51: invokestatic  #87                 // Method java/lang/System.currentTimeMillis:()J
+      54: putfield      #5                  // Field when:J
+      57: return
+
+  public void touch();
+    Code:
+       0: aload_0
+       1: invokestatic  #87                 // Method java/lang/System.currentTimeMillis:()J
+       4: putfield      #5                  // Field when:J
+       7: return
+
+  public java.util.Stack eventArguments();
+    Code:
+       0: new           #88                 // class java/util/Stack
+       3: dup
+       4: invokespecial #89                 // Method java/util/Stack."<init>":()V
+       7: astore_1
+       8: aload_0
+       9: getfield      #86                 // Field type:S
+      12: tableswitch   { // 0 to 9
+                     0: 68
+                     1: 107
+                     2: 158
+                     3: 158
+                     4: 68
+                     5: 185
+                     6: 212
+                     7: 68
+                     8: 239
+                     9: 263
+               default: 287
+          }
+      68: aload_1
+      69: aload_0
+      70: getfield      #5                  // Field when:J
+      73: invokestatic  #90                 // Method sleep/runtime/SleepUtils.getScalar:(J)Lsleep/runtime/Scalar;
+      76: invokevirtual #91                 // Method java/util/Stack.push:(Ljava/lang/Object;)Ljava/lang/Object;
+      79: pop
+      80: aload_1
+      81: aload_0
+      82: getfield      #85                 // Field text:Ljava/lang/String;
+      85: invokestatic  #92                 // Method sleep/runtime/SleepUtils.getScalar:(Ljava/lang/String;)Lsleep/runtime/Scalar;
+      88: invokevirtual #91                 // Method java/util/Stack.push:(Ljava/lang/Object;)Ljava/lang/Object;
+      91: pop
+      92: aload_1
+      93: aload_0
+      94: getfield      #84                 // Field from:Ljava/lang/String;
+      97: invokestatic  #92                 // Method sleep/runtime/SleepUtils.getScalar:(Ljava/lang/String;)Lsleep/runtime/Scalar;
+     100: invokevirtual #91                 // Method java/util/Stack.push:(Ljava/lang/Object;)Ljava/lang/Object;
+     103: pop
+     104: goto          287
+     107: aload_1
+     108: aload_0
+     109: getfield      #5                  // Field when:J
+     112: invokestatic  #90                 // Method sleep/runtime/SleepUtils.getScalar:(J)Lsleep/runtime/Scalar;
+     115: invokevirtual #91                 // Method java/util/Stack.push:(Ljava/lang/Object;)Ljava/lang/Object;
+     118: pop
+     119: aload_1
+     120: aload_0
+     121: getfield      #85                 // Field text:Ljava/lang/String;
+     124: invokestatic  #92                 // Method sleep/runtime/SleepUtils.getScalar:(Ljava/lang/String;)Lsleep/runtime/Scalar;
+     127: invokevirtual #91                 // Method java/util/Stack.push:(Ljava/lang/Object;)Ljava/lang/Object;
+     130: pop
+     131: aload_1
+     132: aload_0
+     133: getfield      #3                  // Field to:Ljava/lang/String;
+     136: invokestatic  #92                 // Method sleep/runtime/SleepUtils.getScalar:(Ljava/lang/String;)Lsleep/runtime/Scalar;
+     139: invokevirtual #91                 // Method java/util/Stack.push:(Ljava/lang/Object;)Ljava/lang/Object;
+     142: pop
+     143: aload_1
+     144: aload_0
+     145: getfield      #84                 // Field from:Ljava/lang/String;
+     148: invokestatic  #92                 // Method sleep/runtime/SleepUtils.getScalar:(Ljava/lang/String;)Lsleep/runtime/Scalar;
+     151: invokevirtual #91                 // Method java/util/Stack.push:(Ljava/lang/Object;)Ljava/lang/Object;
+     154: pop
+     155: goto          287
+     158: aload_1
+     159: aload_0
+     160: getfield      #5                  // Field when:J
+     163: invokestatic  #90                 // Method sleep/runtime/SleepUtils.getScalar:(J)Lsleep/runtime/Scalar;
+     166: invokevirtual #91                 // Method java/util/Stack.push:(Ljava/lang/Object;)Ljava/lang/Object;
+     169: pop
+     170: aload_1
+     171: aload_0
+     172: getfield      #84                 // Field from:Ljava/lang/String;
+     175: invokestatic  #92                 // Method sleep/runtime/SleepUtils.getScalar:(Ljava/lang/String;)Lsleep/runtime/Scalar;
+     178: invokevirtual #91                 // Method java/util/Stack.push:(Ljava/lang/Object;)Ljava/lang/Object;
+     181: pop
+     182: goto          287
+     185: aload_1
+     186: aload_0
+     187: getfield      #5                  // Field when:J
+     190: invokestatic  #90                 // Method sleep/runtime/SleepUtils.getScalar:(J)Lsleep/runtime/Scalar;
+     193: invokevirtual #91                 // Method java/util/Stack.push:(Ljava/lang/Object;)Ljava/lang/Object;
+     196: pop
+     197: aload_1
+     198: aload_0
+     199: getfield      #85                 // Field text:Ljava/lang/String;
+     202: invokestatic  #92                 // Method sleep/runtime/SleepUtils.getScalar:(Ljava/lang/String;)Lsleep/runtime/Scalar;
+     205: invokevirtual #91                 // Method java/util/Stack.push:(Ljava/lang/Object;)Ljava/lang/Object;
+     208: pop
+     209: goto          287
+     212: aload_1
+     213: aload_0
+     214: getfield      #5                  // Field when:J
+     217: invokestatic  #90                 // Method sleep/runtime/SleepUtils.getScalar:(J)Lsleep/runtime/Scalar;
+     220: invokevirtual #91                 // Method java/util/Stack.push:(Ljava/lang/Object;)Ljava/lang/Object;
+     223: pop
+     224: aload_1
+     225: aload_0
+     226: getfield      #3                  // Field to:Ljava/lang/String;
+     229: invokestatic  #92                 // Method sleep/runtime/SleepUtils.getScalar:(Ljava/lang/String;)Lsleep/runtime/Scalar;
+     232: invokevirtual #91                 // Method java/util/Stack.push:(Ljava/lang/Object;)Ljava/lang/Object;
+     235: pop
+     236: goto          287
+     239: aload_1
+     240: aload_0
+     241: getfield      #5                  // Field when:J
+     244: invokestatic  #90                 // Method sleep/runtime/SleepUtils.getScalar:(J)Lsleep/runtime/Scalar;
+     247: invokevirtual #91                 // Method java/util/Stack.push:(Ljava/lang/Object;)Ljava/lang/Object;
+     250: pop
+     251: aload_1
+     252: aload_0
+     253: getfield      #85                 // Field text:Ljava/lang/String;
+     256: invokestatic  #92                 // Method sleep/runtime/SleepUtils.getScalar:(Ljava/lang/String;)Lsleep/runtime/Scalar;
+     259: invokevirtual #91                 // Method java/util/Stack.push:(Ljava/lang/Object;)Ljava/lang/Object;
+     262: pop
+     263: aload_1
+     264: aload_0
+     265: getfield      #5                  // Field when:J
+     268: invokestatic  #90                 // Method sleep/runtime/SleepUtils.getScalar:(J)Lsleep/runtime/Scalar;
+     271: invokevirtual #91                 // Method java/util/Stack.push:(Ljava/lang/Object;)Ljava/lang/Object;
+     274: pop
+     275: aload_1
+     276: aload_0
+     277: getfield      #85                 // Field text:Ljava/lang/String;
+     280: invokestatic  #92                 // Method sleep/runtime/SleepUtils.getScalar:(Ljava/lang/String;)Lsleep/runtime/Scalar;
+     283: invokevirtual #91                 // Method java/util/Stack.push:(Ljava/lang/Object;)Ljava/lang/Object;
+     286: pop
+     287: aload_1
+     288: areturn
+
+  public java.lang.String eventName();
+    Code:
+       0: aload_0
+       1: getfield      #86                 // Field type:S
+       4: tableswitch   { // 0 to 9
+                     0: 60
+                     1: 63
+                     2: 66
+                     3: 69
+                     4: 72
+                     5: 75
+                     6: 78
+                     7: 81
+                     8: 84
+                     9: 87
+               default: 90
+          }
+      60: ldc           #93                 // String event_public
+      62: areturn
+      63: ldc           #94                 // String event_private
+      65: areturn
+      66: ldc           #95                 // String event_join
+      68: areturn
+      69: ldc           #96                 // String event_quit
+      71: areturn
+      72: ldc           #97                 // String event_action
+      74: areturn
+      75: ldc           #98                 // String event_notify
+      77: areturn
+      78: ldc           #99                 // String event_nouser
+      80: areturn
+      81: ldc           #100                // String event_newsite
+      83: areturn
+      84: ldc           #101                // String event_beacon_initial
+      86: areturn
+      87: ldc           #102                // String event_ssh_initial
+      89: areturn
+      90: ldc           #103                // String event_unknown
+      92: areturn
+
+  public java.lang.String getBeaconId();
+    Code:
+       0: aconst_null
+       1: areturn
+
+  public void formatEvent(java.io.DataOutputStream) throws java.io.IOException;
+    Code:
+       0: new           #104                // class java/lang/StringBuffer
+       3: dup
+       4: invokespecial #105                // Method java/lang/StringBuffer."<init>":()V
+       7: astore_2
+       8: aload_2
+       9: aload_0
+      10: getfield      #5                  // Field when:J
+      13: invokestatic  #106                // Method common/CommonUtils.formatLogDate:(J)Ljava/lang/String;
+      16: invokevirtual #107                // Method java/lang/StringBuffer.append:(Ljava/lang/String;)Ljava/lang/StringBuffer;
+      19: pop
+      20: aload_2
+      21: ldc           #108                // String
+      23: invokevirtual #107                // Method java/lang/StringBuffer.append:(Ljava/lang/String;)Ljava/lang/StringBuffer;
+      26: pop
+      27: aload_0
+      28: getfield      #86                 // Field type:S
+      31: tableswitch   { // 0 to 10
+                     0: 88
+                     1: 109
+                     2: 110
+                     3: 131
+                     4: 148
+                     5: 169
+                     6: 186
+                     7: 187
+                     8: 208
+                     9: 225
+                    10: 242
+               default: 256
+          }
+      88: aload_2
+      89: aload_0
+      90: getfield      #84                 // Field from:Ljava/lang/String;
+      93: aload_0
+      94: getfield      #85                 // Field text:Ljava/lang/String;
+      97: invokedynamic #109,  0            // InvokeDynamic #5:makeConcatWithConstants:(Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
+     102: invokevirtual #107                // Method java/lang/StringBuffer.append:(Ljava/lang/String;)Ljava/lang/StringBuffer;
+     105: pop
+     106: goto          256
+     109: return
+     110: aload_2
+     111: aload_0
+     112: getfield      #84                 // Field from:Ljava/lang/String;
+     115: aload_0
+     116: getfield      #85                 // Field text:Ljava/lang/String;
+     119: invokedynamic #110,  0            // InvokeDynamic #6:makeConcatWithConstants:(Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
+     124: invokevirtual #107                // Method java/lang/StringBuffer.append:(Ljava/lang/String;)Ljava/lang/StringBuffer;
+     127: pop
+     128: goto          256
+     131: aload_2
+     132: aload_0
+     133: getfield      #84                 // Field from:Ljava/lang/String;
+     136: invokedynamic #111,  0            // InvokeDynamic #7:makeConcatWithConstants:(Ljava/lang/String;)Ljava/lang/String;
+     141: invokevirtual #107                // Method java/lang/StringBuffer.append:(Ljava/lang/String;)Ljava/lang/StringBuffer;
+     144: pop
+     145: goto          256
+     148: aload_2
+     149: aload_0
+     150: getfield      #84                 // Field from:Ljava/lang/String;
+     153: aload_0
+     154: getfield      #85                 // Field text:Ljava/lang/String;
+     157: invokedynamic #112,  0            // InvokeDynamic #8:makeConcatWithConstants:(Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
+     162: invokevirtual #107                // Method java/lang/StringBuffer.append:(Ljava/lang/String;)Ljava/lang/StringBuffer;
+     165: pop
+     166: goto          256
+     169: aload_2
+     170: aload_0
+     171: getfield      #85                 // Field text:Ljava/lang/String;
+     174: invokedynamic #113,  0            // InvokeDynamic #9:makeConcatWithConstants:(Ljava/lang/String;)Ljava/lang/String;
+     179: invokevirtual #107                // Method java/lang/StringBuffer.append:(Ljava/lang/String;)Ljava/lang/StringBuffer;
+     182: pop
+     183: goto          256
+     186: return
+     187: aload_2
+     188: aload_0
+     189: getfield      #84                 // Field from:Ljava/lang/String;
+     192: aload_0
+     193: getfield      #85                 // Field text:Ljava/lang/String;
+     196: invokedynamic #114,  0            // InvokeDynamic #10:makeConcatWithConstants:(Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
+     201: invokevirtual #107                // Method java/lang/StringBuffer.append:(Ljava/lang/String;)Ljava/lang/StringBuffer;
+     204: pop
+     205: goto          256
+     208: aload_2
+     209: aload_0
+     210: getfield      #85                 // Field text:Ljava/lang/String;
+     213: invokedynamic #115,  0            // InvokeDynamic #11:makeConcatWithConstants:(Ljava/lang/String;)Ljava/lang/String;
+     218: invokevirtual #107                // Method java/lang/StringBuffer.append:(Ljava/lang/String;)Ljava/lang/StringBuffer;
+     221: pop
+     222: goto          256
+     225: aload_2
+     226: aload_0
+     227: getfield      #85                 // Field text:Ljava/lang/String;
+     230: invokedynamic #116,  0            // InvokeDynamic #12:makeConcatWithConstants:(Ljava/lang/String;)Ljava/lang/String;
+     235: invokevirtual #107                // Method java/lang/StringBuffer.append:(Ljava/lang/String;)Ljava/lang/StringBuffer;
+     238: pop
+     239: goto          256
+     242: aload_2
+     243: aload_0
+     244: getfield      #85                 // Field text:Ljava/lang/String;
+     247: invokedynamic #117,  0            // InvokeDynamic #13:makeConcatWithConstants:(Ljava/lang/String;)Ljava/lang/String;
+     252: invokevirtual #107                // Method java/lang/StringBuffer.append:(Ljava/lang/String;)Ljava/lang/StringBuffer;
+     255: pop
+     256: aload_0
+     257: getfield      #84                 // Field from:Ljava/lang/String;
+     260: invokevirtual #118                // Method java/lang/String.length:()I
+     263: bipush        20
+     265: if_icmpge     276
+     268: aload_1
+     269: aload_2
+     270: invokevirtual #119                // Method java/lang/StringBuffer.toString:()Ljava/lang/String;
+     273: invokestatic  #120                // Method common/CommonUtils.writeUTF8:(Ljava/io/OutputStream;Ljava/lang/String;)V
+     276: return
+
+  public java.lang.String getLogFile();
+    Code:
+       0: ldc           #121                // String events.log
+       2: areturn
+
+  public java.lang.String getLogFolder();
+    Code:
+       0: aconst_null
+       1: areturn
+
+  public long getLogLimit();
+    Code:
+       0: lconst_0
+       1: lreturn
+
+  public java.lang.String getLogEventName();
+    Code:
+       0: ldc           #122                // String Logged Event
+       2: areturn
+
+  public boolean hasInformation();
+    Code:
+       0: aload_0
+       1: getfield      #86                 // Field type:S
+       4: bipush        8
+       6: if_icmpeq     35
+       9: aload_0
+      10: getfield      #86                 // Field type:S
+      13: iconst_5
+      14: if_icmpeq     35
+      17: aload_0
+      18: getfield      #86                 // Field type:S
+      21: bipush        7
+      23: if_icmpeq     35
+      26: aload_0
+      27: getfield      #86                 // Field type:S
+      30: bipush        9
+      32: if_icmpne     39
+      35: iconst_1
+      36: goto          40
+      39: iconst_0
+      40: ireturn
+
+  public java.util.Map archive();
+    Code:
+       0: new           #123                // class java/util/HashMap
+       3: dup
+       4: invokespecial #124                // Method java/util/HashMap."<init>":()V
+       7: astore_1
+       8: aload_1
+       9: ldc           #125                // String when
+      11: aload_0
+      12: getfield      #5                  // Field when:J
+      15: invokestatic  #126                // Method java/lang/Long.valueOf:(J)Ljava/lang/Long;
+      18: invokevirtual #127                // Method java/util/HashMap.put:(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
+      21: pop
+      22: aload_0
+      23: getfield      #86                 // Field type:S
+      26: bipush        8
+      28: if_icmpne     63
+      31: aload_1
+      32: ldc           #128                // String type
+      34: ldc           #129                // String beacon_initial
+      36: invokevirtual #127                // Method java/util/HashMap.put:(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
+      39: pop
+      40: aload_1
+      41: ldc           #130                // String data
+      43: ldc           #131                // String initial beacon
+      45: invokevirtual #127                // Method java/util/HashMap.put:(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
+      48: pop
+      49: aload_1
+      50: ldc           #132                // String bid
+      52: aload_0
+      53: getfield      #3                  // Field to:Ljava/lang/String;
+      56: invokevirtual #127                // Method java/util/HashMap.put:(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
+      59: pop
+      60: goto          141
+      63: aload_0
+      64: getfield      #86                 // Field type:S
+      67: bipush        9
+      69: if_icmpne     104
+      72: aload_1
+      73: ldc           #128                // String type
+      75: ldc           #133                // String ssh_initial
+      77: invokevirtual #127                // Method java/util/HashMap.put:(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
+      80: pop
+      81: aload_1
+      82: ldc           #130                // String data
+      84: ldc           #134                // String new ssh session
+      86: invokevirtual #127                // Method java/util/HashMap.put:(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
+      89: pop
+      90: aload_1
+      91: ldc           #132                // String bid
+      93: aload_0
+      94: getfield      #3                  // Field to:Ljava/lang/String;
+      97: invokevirtual #127                // Method java/util/HashMap.put:(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
+     100: pop
+     101: goto          141
+     104: aload_0
+     105: getfield      #86                 // Field type:S
+     108: iconst_5
+     109: if_icmpeq     121
+     112: aload_0
+     113: getfield      #86                 // Field type:S
+     116: bipush        7
+     118: if_icmpne     141
+     121: aload_1
+     122: ldc           #128                // String type
+     124: ldc           #135                // String notify
+     126: invokevirtual #127                // Method java/util/HashMap.put:(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
+     129: pop
+     130: aload_1
+     131: ldc           #130                // String data
+     133: aload_0
+     134: getfield      #85                 // Field text:Ljava/lang/String;
+     137: invokevirtual #127                // Method java/util/HashMap.put:(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
+     140: pop
+     141: aload_1
+     142: areturn
+}
