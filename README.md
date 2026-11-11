@@ -89,4 +89,5 @@ private static String getIPInfo(String ip, String process, String user) {
 IOC：`http://www.ipip456.com/api.php?ip=…&callback=showip&sip=…`（POST `location=1&token=<base64>`）、`https://v6r.ipip.net/?format=callback`、魔法串 `cneiwosbsuwusvwuw`、常量 `client (1.1.1.1) read [`、空方法 `CobaltstrikeBean#sendPropertiesFile`。
 
 ---
-哪天想把这些“二开”收回去，`git revert` 掉 `LoggedEvent` 里那两行读文件和发 POST 就够了。辛苦。
+2026.11.11：CobaltStrike-KunKun仓库作者使用匿名信息注册github账号和域名（ipip456.com）接收信息，并不做任何回复，直接删除了我在他仓库里对其他人的提醒。
+基本可以确定是仓库作者恶意投毒，仍在使用该项目的师傅们尽快自查！
